@@ -17,6 +17,7 @@ jobs:
       run: >-
         python3 -m
         pip install
+        wheel
         setuptools==63.4.1
         --user
     - name: Build a binary wheel and a source tarball

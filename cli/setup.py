@@ -15,7 +15,7 @@ setup(
     name="medperf",
     version=__version__,
     description="CLI Tool for federated benchmarking on medical private data",
-    long_description=open('README.md').read(),
+    long_description=open('../README.md').read(),
     long_description_content_type='text/markdown',
     url="https://github.com/mlcommons/medperf",
     author="MLCommons",

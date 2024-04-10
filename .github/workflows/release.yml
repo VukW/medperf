@@ -82,7 +82,7 @@ jobs:
           path: cli/dist
       - name: Create and push tag
         run: |
-          version=${{ needs.extract-version.outputs.version }}
+          version=${{ needs.extract-version.outputs.new_version }}
           echo "version found: [$version]"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -92,5 +92,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          version=${{ needs.extract-version.outputs.version }}
+          version=${{ needs.extract-version.outputs.new_version }}
           gh release create "v$version" cli/dist/* --generate-notes --repo ${{ github.repository }}

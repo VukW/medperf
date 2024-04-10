@@ -11,7 +11,7 @@ class CommunicationRetrievalError(CommunicationError):
 
 
 class CommunicationRequestError(CommunicationError):
-    """Raised when the communication interface can't handle a request appropiately"""
+    """Raised when the communication interface can't handle a request appropriately"""
 
 
 class CommunicationAuthenticationError(CommunicationError):
@@ -23,7 +23,7 @@ class InvalidEntityError(MedperfException):
 
 
 class InvalidArgumentError(MedperfException):
-    """Raised when an argument or set of arguments are consided invalid"""
+    """Raised when an argument or set of arguments are considered invalid"""
 
 
 class ExecutionError(MedperfException):
@@ -31,7 +31,7 @@ class ExecutionError(MedperfException):
 
 
 class CleanExit(MedperfException):
-    """Raised when Medperf needs to stop for non erroneous reasons"""
+    """Raised when Medperf needs to stop for non-erroneous reasons"""
 
     def __init__(self, *args, medperf_status_code=0) -> None:
         super().__init__(*args)

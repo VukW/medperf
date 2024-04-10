@@ -82,7 +82,8 @@ jobs:
           path: cli/dist
       - name: Create and push tag
         run: |
-          version=${{ needs.extract-version.outputs.new_version }}
+          version=${{ needs.extract-version.outputs.version }}
+          echo "version found: [$version]"
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git tag -a "v$version" -m "Release v$version"

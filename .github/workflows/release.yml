@@ -92,5 +92,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          version=${{ needs.extract-version.outputs.new_version }}
+          version=${{ needs.extract-version.outputs.version }}
           gh release create "v$version" cli/dist/* --generate-notes --repo ${{ github.repository }}

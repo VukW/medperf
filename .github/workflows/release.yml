@@ -17,6 +17,7 @@ jobs:
         run: |
           version=$(python3 -c "exec(open('./cli/medperf/_version.py').read()); print(__version__)")
           echo "version=$version" >> $GITHUB_OUTPUT
+          echo "version found: [$version]"
 
   check-release:
     needs: extract-version
@@ -28,6 +29,7 @@ jobs:
         id: check_release
         run: |
           version=${{ needs.extract-version.outputs.new_version }}
+          echo "version found: [$version]"
           if gh release view "v$version" --repo ${{ github.repository }}; then
             echo "should_release=false" >> $GITHUB_OUTPUT
           else

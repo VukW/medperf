@@ -1,0 +1,23 @@
+name: Check version increase
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  extract-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Extract package version
+        id: extract_version
+        run: |
+          python -m pip install packaging
+          new_version=$(python3 -c "exec(open('./cli/medperf/_version.py').read()); print(__version__)")
+          echo "version found: [$new_version]"
+          latest_version=$(gh release list --repo ${{ github.repository }} | head -n 1 | awk '{print $1}')
+          if [ -z "$latest_version" ]; then
+            latest_version="0.0.0"
+          fi
+          echo "latest version found: [$latest_version]"
+          python3 -c "from packaging.version import parse; assert parse('$new_version') > parse('$latest_version'), 'New version must be greater than the latest version'"

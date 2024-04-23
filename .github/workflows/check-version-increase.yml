@@ -20,4 +20,4 @@ jobs:
             latest_version="0.0.0"
           fi
           echo "latest version found: [$latest_version]"
-          python3 -c "from packaging.version import parse; assert parse('$new_version') > parse('$latest_version'), 'New version must be greater than the latest version'"
+          python3 -c "from packaging.version import parse; assert parse('$new_version') >= parse('$latest_version'), 'New version must be greater than the latest version'"

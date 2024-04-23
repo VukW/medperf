@@ -22,6 +22,8 @@ jobs:
   check-release:
     needs: extract-version
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     outputs:
       should_release: ${{ steps.check_release.outputs.should_release }}
     steps:

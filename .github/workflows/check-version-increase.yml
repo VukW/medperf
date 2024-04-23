@@ -15,7 +15,10 @@ jobs:
           python -m pip install packaging
           new_version=$(python3 -c "exec(open('./cli/medperf/_version.py').read()); print(__version__)")
           echo "version found: [$new_version]"
+          echo "latest release:"
+          gh release list --repo ${{ github.repository }} | head -n 1
           latest_version=$(gh release list --repo ${{ github.repository }} | head -n 1 | awk '{print $1}')
+          echo "latest version found: [$latest_version]"
           if [ -z "$latest_version" ]; then
             latest_version="0.0.0"
           fi
